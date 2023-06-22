@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bounce-ball 2</title>
+  <style>
+    body {
+      background-color: rgb(64, 120, 166);
+    }
+   #ball {
+      background-color: #9de14f;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      position: absolute;
+      top: 200px;
+      left: 420px;
+   }
+    .custom {
+      animation-name: bounce;
+      animation-duration: 1s;
+    }
+    @keyframes bounce {
+      10% {
+        height: 50Px;
+        width: 50px;
+      }
+      50% {
+        height: 30px;
+        width: 57px;
+        transform: translatey(200px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="ball"></div>
+  
+  Enter Number : <input id="count" type="number" min="0" max="infinite" name="" />
+  <br><br>
+  <button id="main" onclick='button()'>Submit</button>
+
+  <script>
+    function button() {
+      ball.classList.remove("custom");
+      var count = document.getElementById('count').value;
+      var parent = ball.parentElement;
+      var nextBall = ball.cloneNode(true);
+      parent.removeChild(ball);
+      parent.appendChild(nextBall);
+
+      ball = nextBall;
+      ball.style.animationName = "bounce";
+      ball.style.animationDuration = "1s";
+      ball.style.animationIterationCount = count;
+
+      ball.classList.add("custom");
+    }
+  </script>
+</body>
+</html>
